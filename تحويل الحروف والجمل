@@ -1,1 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحويل الحروف</title>
+    <style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
 
+    #inputText {
+        width: 80%;
+        margin-bottom: 10px;
+        font-size: 1.5em;
+        text-align: right;
+        direction: rtl;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        letter-spacing: normal;
+        word-spacing: normal;
+        line-height: 1.5;
+    }
+
+    #inputText * {
+        margin-right: 0.3em;
+    }
+
+    button {
+        font-size: 1.6em;
+    }
+    #outputText {
+        font-size: 1.5em;
+    }
+</style>
+</head>
+<body>
+    <textarea id="inputText" rows="4" cols="50" placeholder="أدخل النص هنا"></textarea>
+    <button onclick="convert()">تحويل</button>
+    <div id="outputText"></div>
+
+    <script>
+        function convert() {
+            const inputText = document.getElementById('inputText').value;
+            const outputText = document.getElementById('outputText');
+            
+            const conversionMap = {
+                'א': 'أ',
+                'ב': 'ب',
+                'ג': 'ج',
+                'ד': 'د',
+                'ה': 'ه',
+                'ו': 'و',
+                'ז': 'ز',
+                'ח': 'ح',
+                'ט': 'ط',
+                'י': 'ي',
+                'כ': 'ك',
+                'ך': 'ك',
+                'ל': 'ل',
+                'מ': 'م',
+                'ם': 'م',
+                'נ': 'ن',
+                'ן': 'ن',
+                'ס': 'س',
+                'ע': 'ع',
+                'פ': 'ف',
+                'ף': 'ف',
+                'צ': 'ص',
+                'ץ': 'ص',
+                'ק': 'ق',
+                'ר': 'ر',
+                'ש': 'ش',
+                'ת': 'ت',
+                'أ': 'א',
+                'ب': 'ב',
+                'ج': 'ג',
+                'د': 'ד',
+                'ه': 'ה',
+                'و': 'ו',
+                'ز': 'ז',
+                'ح': 'ח',
+                'ط': 'ט',
+                'ي': 'י',
+                'ك': 'כ',
+                'ل': 'ל',
+                'م': 'מ',
+                'ن': 'נ',
+                'س': 'ס',
+                'ع': 'ע',
+                'ف': 'פ',
+                'ص': 'צ',
+                'ق': 'ק',
+                'ر': 'ר',
+                'ش': 'ש',
+                'ت': 'ת'
+            };
+
+            let result = '';
+            for (let i = 0; i < inputText.length; i++) {
+                const char = inputText[i];
+                result += conversionMap[char] || char;
+            }
+
+            outputText.textContent = result;
+        }
+    </script>
+</body>
+</html>
